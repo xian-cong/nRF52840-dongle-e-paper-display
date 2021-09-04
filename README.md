@@ -1,4 +1,4 @@
-# nrf52840-dongle-e-paper-display
+# nRF52840 Dongle E-paper Display
 Using **nrf52840 dongle** with **zephyr rtos** to display stuff on [**waveshare epaper display**](https://www.waveshare.com/e-paper-shield.htm) through SPI  
 
 Zephyr build:  
