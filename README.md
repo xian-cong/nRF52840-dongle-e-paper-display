@@ -4,7 +4,7 @@ Using **nrf52840 dongle** with **zephyr rtos** to display stuff on [**waveshare 
 Zephyr build:  
 ```
 cd zephyrproject/zephyr
-west build -p -b nrf52840dongle_nrf52840 samples/myprojects/epd
+west build -p -b nrf52840dongle_nrf52840 samples/myprojects/epd1in54_V2
 ```
 Zephyr documentation:
 https://docs.zephyrproject.org/latest/boards/shields/waveshare_epaper/doc/index.html  
