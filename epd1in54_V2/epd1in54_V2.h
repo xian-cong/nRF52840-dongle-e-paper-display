@@ -50,7 +50,6 @@ private:
 	unsigned int dc_pin;
 	unsigned int cs_pin;
 	unsigned int busy_pin;
-	const struct device *dev;
 
 	void Lut(unsigned char* lut);
 	void SetLut(unsigned char* lut);

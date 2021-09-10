@@ -64,17 +64,12 @@ Epd::Epd()
 	height = EPD_HEIGHT;
 };
 
-Epd::Epd(const struct device *dev)
-{
-	this -> dev = dev;
-}
-
 /**
  *  @brief: basic function for sending commands
  */
 void Epd::SendCommand(unsigned char command)
 {
-	DigitalWrite(this -> dev, dc_pin, 0);
+	DigitalWrite(gpio0, dc_pin, 0);
 	SpiTransfer(command);
 }
 
@@ -83,7 +78,7 @@ void Epd::SendCommand(unsigned char command)
  */
 void Epd::SendData(unsigned char data)
 {
-	DigitalWrite(this -> dev, dc_pin, 1);
+	DigitalWrite(gpio0, dc_pin, 1);
 	SpiTransfer(data);
 }
 
@@ -92,7 +87,7 @@ void Epd::SendData(unsigned char data)
  */
 void Epd::WaitUntilIdle(void)
 {
-	while(DigitalRead(busy_pin) == 1) {      //LOW: idle, HIGH: busy
+	while(DigitalRead(gpio0, busy_pin) == 1) {      //LOW: idle, HIGH: busy
 		DelayMs(100);
 	}
 	DelayMs(200);
@@ -243,11 +238,11 @@ int Epd::LDirInit(void)
  */
 void Epd::Reset(void)
 {
-	DigitalWrite(this -> dev, reset_pin, 1);
+	DigitalWrite(gpio0, reset_pin, 1);
 	DelayMs(20);
-	DigitalWrite(this -> dev, reset_pin, 0);                //module reset
+	DigitalWrite(gpio0, reset_pin, 0);                //module reset
 	DelayMs(5);
-	DigitalWrite(this -> dev, reset_pin, 1);
+	DigitalWrite(gpio0, reset_pin, 1);
 	DelayMs(20);
 }
 
@@ -426,9 +421,9 @@ void Epd::SetFrameMemory(
 	int x_end;
 	int y_end;
 	
-	DigitalWrite(this -> dev, reset_pin, 0);                //module reset
+	DigitalWrite(gpio0, reset_pin, 0);                //module reset
 	DelayMs(2);
-	DigitalWrite(this -> dev, reset_pin, 1);
+	DigitalWrite(gpio0, reset_pin, 1);
 	DelayMs(2);
 	SendCommand(0x3c);
 	SendData(0x80);
@@ -475,9 +470,9 @@ void Epd::SetFrameMemoryPartial(
 	int x_end;
 	int y_end;
 	
-	DigitalWrite(this -> dev, reset_pin, 0);                //module reset
+	DigitalWrite(gpio0, reset_pin, 0);                //module reset
 	DelayMs(2);
-	DigitalWrite(this -> dev, reset_pin, 1);
+	DigitalWrite(gpio0, reset_pin, 1);
 	DelayMs(2);
 
 	SetLut(WF_PARTIAL_1IN54_0);
@@ -546,7 +541,7 @@ void Epd::Sleep()
 	SendData(0x01);
 	DelayMs(200);
 
-	DigitalWrite(this -> dev, reset_pin, 0);
+	DigitalWrite(gpio0, reset_pin, 0);
 }
 
 /* END OF FILE */

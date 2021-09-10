@@ -15,7 +15,7 @@ static const struct device *spi_display;
 // static struct spi_cs_control cs_ctrl;
 static const struct spi_config spi_cfg = {
 	.frequency = 2000000U
-    .operation = SPI_TRANSFER_MSB,
+    .operation = SPI_TRANSFER_MSB | SPI_MODE_CPOL | SPI_MODE_CPHA,
     .slave = 0,
 };
 
@@ -54,9 +54,9 @@ int EpdIf::IfInit(void) {
     gpio_pin_configure(gpio0, DC_PIN, GPIO_OUTPUT);
     gpio_pin_configure(gpio0, BUSY_PIN, GPIO_INPUT); 
 
-    spi_display = device_get_binding("SPI_1");
+    spi_display = device_get_binding("SPI_0");
 
-    SPI.begin();
-    SPI.beginTransaction(SPISettings(2000000, MSBFIRST, SPI_MODE0));
+    // SPI.begin();
+    // SPI.beginTransaction(SPISettings(2000000, MSBFIRST, SPI_MODE0));
     return 0;
 }
