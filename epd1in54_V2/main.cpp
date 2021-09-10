@@ -18,17 +18,13 @@ unsigned long time_now_s;
 
 void main()
 {
-  const struct device *dev = device_get_binding("SPI_0");
   // put your setup code here, to run once:
-  Serial.begin(115200);
-  Serial.println("e-Paper init and clear");
   epd.LDirInit();
   epd.Clear();
 
   paint.SetWidth(200);
   paint.SetHeight(24);
 
-  Serial.println("e-Paper paint");
   paint.Clear(COLORED);
   paint.DrawStringAt(30, 4, "Hello world!", &Font16, UNCOLORED);
   epd.SetFrameMemory(paint.GetImage(), 0, 10, paint.GetWidth(), paint.GetHeight());
@@ -60,7 +56,6 @@ void main()
   epd.DisplayFrame();
   k_msleep(2000);
 
-  Serial.println("e-Paper show pic");
   epd.HDirInit();
   // epd.Display(IMAGE_DATA);
 
@@ -86,9 +81,4 @@ void main()
   epd.HDirInit();
   epd.Clear();
   epd.Sleep();
-}
-
-void loop()
-{
-
 }
