@@ -1,4 +1,4 @@
-#include <avr/pgmspace.h>
+#include "pgmspace.h"
 #include "epdpaint.h"
 
 Paint::Paint(unsigned char* image, int width, int height) {

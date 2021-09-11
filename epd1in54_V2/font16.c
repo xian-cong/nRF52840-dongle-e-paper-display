@@ -1,6 +1,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "fonts.h"
-#include <avr/pgmspace.h>
+#include "pgmspace.h"
 
 // 
 //  Font data for Courier New 12pt

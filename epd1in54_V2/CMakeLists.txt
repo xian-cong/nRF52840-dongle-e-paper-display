@@ -6,8 +6,8 @@ find_package(Zephyr HINTS $ENV{ZEPHYR_BASE})
 project(epd1in54_V2)
 
 target_sources(app PRIVATE main.cpp)
-target_sources(app PRIVATE epd1in52_V2.cpp)
-target_sources(app PRIVATE epd1in52_V2.h)
+target_sources(app PRIVATE epd1in54_V2.cpp)
+target_sources(app PRIVATE epd1in54_V2.h)
 target_sources(app PRIVATE epdif.cpp)
 target_sources(app PRIVATE epdif.h)
 target_sources(app PRIVATE epdpaint.cpp)
@@ -19,5 +19,7 @@ target_sources(app PRIVATE font24.c)
 target_sources(app PRIVATE fonts.h)
 target_sources(app PRIVATE imagedata.cpp)
 target_sources(app PRIVATE imagedata.h)
+target_sources(app PRIVATE pgmspace.h)
+
 
 target_include_directories(app PRIVATE ./)

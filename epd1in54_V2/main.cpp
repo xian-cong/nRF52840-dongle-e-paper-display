@@ -77,7 +77,7 @@ void main()
     k_msleep(100);
   }
 
-  Serial.println("e-Paper clear and goto sleep");
+  // Serial.println("e-Paper clear and goto sleep");
   epd.HDirInit();
   epd.Clear();
   epd.Sleep();
