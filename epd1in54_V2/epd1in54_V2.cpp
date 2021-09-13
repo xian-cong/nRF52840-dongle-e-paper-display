@@ -1,5 +1,7 @@
 #include <stdlib.h>
 #include "epd1in54_V2.h"
+#include <device.h>
+#include <zephyr.h>
 
 
 // waveform full refresh

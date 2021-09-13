@@ -2,6 +2,7 @@
 #define EPDIF_H
 
 #include <zephyr.h>
+#include <device.h>
 
 #define RST_PIN         13
 #define DC_PIN          15
@@ -14,7 +15,7 @@ public:
     EpdIf(void);
     ~EpdIf(void);
 
-    const struct device *gpio0;
+    static const struct device *gpio0;
 
     static int  IfInit(void);
     static void DigitalWrite(const struct device *gpio0, int pin, int value); 
