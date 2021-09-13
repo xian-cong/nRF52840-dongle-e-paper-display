@@ -1,4 +1,4 @@
-#include "pgmspace.h"
+// #include <avr/pgmspace.h>
 #include "epdpaint.h"
 
 Paint::Paint(unsigned char* image, int width, int height) {
@@ -121,19 +121,19 @@ void Paint::DrawCharAt(int x, int y, char ascii_char, sFONT* font, int colored) 
     unsigned int char_offset = (ascii_char - ' ') * font->Height * (font->Width / 8 + (font->Width % 8 ? 1 : 0));
     const unsigned char* ptr = &font->table[char_offset];
 
-    for (j = 0; j < font->Height; j++) {
-        for (i = 0; i < font->Width; i++) {
-            if (pgm_read_byte(ptr) & (0x80 >> (i % 8))) {
-                DrawPixel(x + i, y + j, colored);
-            }
-            if (i % 8 == 7) {
-                ptr++;
-            }
-        }
-        if (font->Width % 8 != 0) {
-            ptr++;
-        }
-    }
+    // for (j = 0; j < font->Height; j++) {
+    //     for (i = 0; i < font->Width; i++) {
+    //         if (pgm_read_byte(ptr) & (0x80 >> (i % 8))) {
+    //             DrawPixel(x + i, y + j, colored);
+    //         }
+    //         if (i % 8 == 7) {
+    //             ptr++;
+    //         }
+    //     }
+    //     if (font->Width % 8 != 0) {
+    //         ptr++;
+    //     }
+    // }
 }
 
 /**

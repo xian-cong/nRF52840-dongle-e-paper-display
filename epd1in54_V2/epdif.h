@@ -10,13 +10,11 @@
 
 class EpdIf {
 private:
-    const struct device *gpio0;
-    const struct device *spi_display;
-    struct spi_cs_control spi_cs;
-	const struct spi_config spi_cfg;
 public:
     EpdIf(void);
     ~EpdIf(void);
+
+    const struct device *gpio0;
 
     static int  IfInit(void);
     static void DigitalWrite(const struct device *gpio0, int pin, int value); 

@@ -17,9 +17,7 @@ target_sources(app PRIVATE font12.c)
 target_sources(app PRIVATE font20.c)
 target_sources(app PRIVATE font24.c)
 target_sources(app PRIVATE fonts.h)
-target_sources(app PRIVATE imagedata.cpp)
-target_sources(app PRIVATE imagedata.h)
-target_sources(app PRIVATE pgmspace.h)
-
+# target_sources(app PRIVATE imagedata.cpp)
+# target_sources(app PRIVATE imagedata.h)
 
 target_include_directories(app PRIVATE ./)

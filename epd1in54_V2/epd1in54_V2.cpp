@@ -268,48 +268,48 @@ void Epd::Clear(void)
 	DisplayFrame();
 }
 
-void Epd::Display(const unsigned char* frame_buffer)
-{
-	int w = (EPD_WIDTH % 8 == 0)? (EPD_WIDTH / 8 ): (EPD_WIDTH / 8 + 1);
-	int h = EPD_HEIGHT;
+// void Epd::Display(const unsigned char* frame_buffer)
+// {
+// 	int w = (EPD_WIDTH % 8 == 0)? (EPD_WIDTH / 8 ): (EPD_WIDTH / 8 + 1);
+// 	int h = EPD_HEIGHT;
 
-	if (frame_buffer != NULL) {
-		SendCommand(0x24);
-		for (int j = 0; j < h; j++) {
-			for (int i = 0; i < w; i++) {
-				SendData(pgm_read_byte(&frame_buffer[i + j * w]));
-			}
-		}
-	}
+// 	if (frame_buffer != NULL) {
+// 		SendCommand(0x24);
+// 		for (int j = 0; j < h; j++) {
+// 			for (int i = 0; i < w; i++) {
+// 				SendData(pgm_read_byte(&frame_buffer[i + j * w]));
+// 			}
+// 		}
+// 	}
 
-	//DISPLAY REFRESH
-	DisplayFrame();
-}
+// 	//DISPLAY REFRESH
+// 	DisplayFrame();
+// }
 
-void Epd::DisplayPartBaseImage(const unsigned char* frame_buffer)
-{
-	int w = (EPD_WIDTH % 8 == 0)? (EPD_WIDTH / 8 ): (EPD_WIDTH / 8 + 1);
-	int h = EPD_HEIGHT;
+// void Epd::DisplayPartBaseImage(const unsigned char* frame_buffer)
+// {
+// 	int w = (EPD_WIDTH % 8 == 0)? (EPD_WIDTH / 8 ): (EPD_WIDTH / 8 + 1);
+// 	int h = EPD_HEIGHT;
 
-	if (frame_buffer != NULL) {
-		SendCommand(0x24);
-		for (int j = 0; j < h; j++) {
-			for (int i = 0; i < w; i++) {
-				SendData(pgm_read_byte(&frame_buffer[i + j * w]));
-			}
-		}
+// 	if (frame_buffer != NULL) {
+// 		SendCommand(0x24);
+// 		for (int j = 0; j < h; j++) {
+// 			for (int i = 0; i < w; i++) {
+// 				SendData(pgm_read_byte(&frame_buffer[i + j * w]));
+// 			}
+// 		}
 
-		SendCommand(0x26);
-		for (int j = 0; j < h; j++) {
-			for (int i = 0; i < w; i++) {
-				SendData(pgm_read_byte(&frame_buffer[i + j * w]));
-			}
-		}
-	}
+// 		SendCommand(0x26);
+// 		for (int j = 0; j < h; j++) {
+// 			for (int i = 0; i < w; i++) {
+// 				SendData(pgm_read_byte(&frame_buffer[i + j * w]));
+// 			}
+// 		}
+// 	}
 
-	//DISPLAY REFRESH
-	DisplayFrame();
-}
+// 	//DISPLAY REFRESH
+// 	DisplayFrame();
+// }
 void Epd::DisplayPartBaseWhiteImage(void)
 {
 	int w = (EPD_WIDTH % 8 == 0)? (EPD_WIDTH / 8 ): (EPD_WIDTH / 8 + 1);
@@ -335,23 +335,23 @@ void Epd::DisplayPartBaseWhiteImage(void)
 }
 
 
-void Epd::DisplayPart(const unsigned char* frame_buffer)
-{
-	int w = (EPD_WIDTH % 8 == 0)? (EPD_WIDTH / 8 ): (EPD_WIDTH / 8 + 1);
-	int h = EPD_HEIGHT;
+// void Epd::DisplayPart(const unsigned char* frame_buffer)
+// {
+// 	int w = (EPD_WIDTH % 8 == 0)? (EPD_WIDTH / 8 ): (EPD_WIDTH / 8 + 1);
+// 	int h = EPD_HEIGHT;
 
-	if (frame_buffer != NULL) {
-		SendCommand(0x24);
-		for (int j = 0; j < h; j++) {
-			for (int i = 0; i < w; i++) {
-				SendData(pgm_read_byte(&frame_buffer[i + j * w]));
-			}
-		}
-	}
+// 	if (frame_buffer != NULL) {
+// 		SendCommand(0x24);
+// 		for (int j = 0; j < h; j++) {
+// 			for (int i = 0; i < w; i++) {
+// 				SendData(pgm_read_byte(&frame_buffer[i + j * w]));
+// 			}
+// 		}
+// 	}
 
-	//DISPLAY REFRESH
-	DisplayPartFrame();
-}
+// 	//DISPLAY REFRESH
+// 	DisplayPartFrame();
+// }
 
 
 /**

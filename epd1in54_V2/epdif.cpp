@@ -11,10 +11,11 @@ EpdIf::~EpdIf() {
 };
 
 static const struct device *gpio0;
+
 static const struct device *spi_display;
 // static struct spi_cs_control cs_ctrl;
 static const struct spi_config spi_cfg = {
-	.frequency = 2000000U
+	.frequency = 2000000U,
     .operation = SPI_TRANSFER_MSB | SPI_MODE_CPOL | SPI_MODE_CPHA,
     .slave = 0,
 };
@@ -42,7 +43,7 @@ void EpdIf::SpiTransfer(unsigned char data) {
     gpio_pin_set(gpio0, CS_PIN, 0);
     spi_data[0] = data;
     tx.buf = spi_data;
-    spi_transceive (spi_display, &spi_cfg, tx.buf, NULL)
+    spi_transceive (spi_display, &spi_cfg, tx.buf, NULL);
     gpio_pin_set(gpio0, CS_PIN, 1);
 }
 
