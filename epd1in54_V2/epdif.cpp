@@ -39,22 +39,22 @@ void EpdIf::DelayMs(unsigned int delaytime) {
 }
 
 void EpdIf::SpiTransfer(unsigned char data) {
-    gpio_pin_set(gpio0, CS_PIN, 0);
+    gpio_pin_set(device_get_binding("GPIO0"), CS_PIN, 0);
     // spi_data[0] = data;
     // tx.buf = spi_data;
     struct spi_buf tx_buf = {.buf = &data, .len = 1};
 	struct spi_buf_set tx_bufs = {.buffers = &tx_buf, .count = 1};   
     spi_transceive (spi_display, &spi_cfg, &tx_bufs, NULL);
-    gpio_pin_set(gpio0, CS_PIN, 1);
+    gpio_pin_set(device_get_binding("GPIO0"), CS_PIN, 1);
 }
 
 int EpdIf::IfInit(void) {
-    gpio0 = device_get_binding("GPIO_0");
+    // gpio0 = device_get_binding("GPIO_0");
 
-    gpio_pin_configure(gpio0, CS_PIN, GPIO_OUTPUT);
-    gpio_pin_configure(gpio0, RST_PIN, GPIO_OUTPUT);
-    gpio_pin_configure(gpio0, DC_PIN, GPIO_OUTPUT);
-    gpio_pin_configure(gpio0, BUSY_PIN, GPIO_INPUT); 
+    gpio_pin_configure(device_get_binding("GPIO0"), CS_PIN, GPIO_OUTPUT);
+    gpio_pin_configure(device_get_binding("GPIO0"), RST_PIN, GPIO_OUTPUT);
+    gpio_pin_configure(device_get_binding("GPIO0"), DC_PIN, GPIO_OUTPUT);
+    gpio_pin_configure(device_get_binding("GPIO0"), BUSY_PIN, GPIO_INPUT); 
 
     spi_display = device_get_binding("SPI_0");
 

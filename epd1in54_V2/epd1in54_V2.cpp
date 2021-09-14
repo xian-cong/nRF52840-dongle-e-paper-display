@@ -71,7 +71,7 @@ Epd::Epd()
  */
 void Epd::SendCommand(unsigned char command)
 {
-	DigitalWrite(gpio0, dc_pin, 0);
+	DigitalWrite(device_get_binding("GPIO0"), dc_pin, 0);
 	SpiTransfer(command);
 }
 
@@ -80,7 +80,7 @@ void Epd::SendCommand(unsigned char command)
  */
 void Epd::SendData(unsigned char data)
 {
-	DigitalWrite(gpio0, dc_pin, 1);
+	DigitalWrite(device_get_binding("GPIO0"), dc_pin, 1);
 	SpiTransfer(data);
 }
 
@@ -89,7 +89,7 @@ void Epd::SendData(unsigned char data)
  */
 void Epd::WaitUntilIdle(void)
 {
-	while(DigitalRead(gpio0, busy_pin) == 1) {      //LOW: idle, HIGH: busy
+	while(DigitalRead(device_get_binding("GPIO0"), busy_pin) == 1) {      //LOW: idle, HIGH: busy
 		DelayMs(100);
 	}
 	DelayMs(200);
@@ -240,11 +240,11 @@ int Epd::LDirInit(void)
  */
 void Epd::Reset(void)
 {
-	DigitalWrite(gpio0, reset_pin, 1);
+	DigitalWrite(device_get_binding("GPIO0"), reset_pin, 1);
 	DelayMs(20);
-	DigitalWrite(gpio0, reset_pin, 0);                //module reset
+	DigitalWrite(device_get_binding("GPIO0"), reset_pin, 0);                //module reset
 	DelayMs(5);
-	DigitalWrite(gpio0, reset_pin, 1);
+	DigitalWrite(device_get_binding("GPIO0"), reset_pin, 1);
 	DelayMs(20);
 }
 
@@ -423,9 +423,9 @@ void Epd::SetFrameMemory(
 	int x_end;
 	int y_end;
 	
-	DigitalWrite(gpio0, reset_pin, 0);                //module reset
+	DigitalWrite(device_get_binding("GPIO0"), reset_pin, 0);                //module reset
 	DelayMs(2);
-	DigitalWrite(gpio0, reset_pin, 1);
+	DigitalWrite(device_get_binding("GPIO0"), reset_pin, 1);
 	DelayMs(2);
 	SendCommand(0x3c);
 	SendData(0x80);
@@ -472,9 +472,9 @@ void Epd::SetFrameMemoryPartial(
 	int x_end;
 	int y_end;
 	
-	DigitalWrite(gpio0, reset_pin, 0);                //module reset
+	DigitalWrite(device_get_binding("GPIO0"), reset_pin, 0);                //module reset
 	DelayMs(2);
-	DigitalWrite(gpio0, reset_pin, 1);
+	DigitalWrite(device_get_binding("GPIO0"), reset_pin, 1);
 	DelayMs(2);
 
 	SetLut(WF_PARTIAL_1IN54_0);
@@ -543,7 +543,7 @@ void Epd::Sleep()
 	SendData(0x01);
 	DelayMs(200);
 
-	DigitalWrite(gpio0, reset_pin, 0);
+	DigitalWrite(device_get_binding("GPIO0"), reset_pin, 0);
 }
 
 /* END OF FILE */
